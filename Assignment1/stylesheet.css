@@ -68,15 +68,18 @@ a:hover {
     left: 0;
 
     background-image: url('image3.png');
-    background-size: contain;
-    background-position: center;
     background-attachment: fixed;
-
+    width: 1239px;
+    height: 1330px;
+    /*
+    background-size: contain;
+    */
+    background-position: center;
     z-index: -1;
 }
 .big_white_text {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -99,7 +102,7 @@ a:hover {
 .block_flower1 {
     position: absolute;
     top: 70px;
-    left: 60px;
+    left: 80px;
     background-image: url('flower.png');
     width: 408px;
     height: 580px;
@@ -160,10 +163,10 @@ a:hover {
 .block_text {
     position: absolute;
     top: 700px;
-    left: 60px;
+    left: 80px;
     background-color: white;
 
-    width: 1119px;
+    width: 1079px;
     height: 500px;
 }
 .quote {
@@ -225,8 +228,8 @@ a:hover {
 .parallax2 {
     position: relative;
     top: 0;
-    left: 60px;
-    width: 1119px;
+    left: 80px;
+    width: 1079px;
     height: 720px;
     overflow: hidden;
 }
@@ -247,7 +250,11 @@ a:hover {
     left: 0;
 
     background-image: url('image2.png');
+    width: 1079px;
+    height: 1330px;
+    /*
     background-size: contain;
+     */
     background-position: center;
     background-attachment: fixed;
 
@@ -256,8 +263,8 @@ a:hover {
 .block_bottom {
     position: relative;
     top: 100px;
-    left: 60px;
-    width: 1119px;
+    left: 80px;
+    width: 1079px;
     height: 200px;
     background-color: #af9453;;
 }
