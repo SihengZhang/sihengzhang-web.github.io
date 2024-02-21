@@ -1,0 +1,26 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Assignment2_StyleSheet.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="./Assignment2_JavaScript.js"></script>
+    <title>Stock Search</title>
+</head>
+<body>
+    <div class = "upper">
+        <div id="heading">
+            <p>Stock Search</p>
+        </div>
+
+        <div id="searching_bar">
+            <button class="upper_buttons" id="search_button" onclick="search_function()"></button>
+            <label for="ticker_symbol"><input type="text" id="ticker_symbol" placeholder="Enter Stock Ticker Symbol"></label>
+            <div id="vertical_line"></div>
+            <button class="upper_buttons" id="clear_button" onclick="clear_function()"></button>
+        </div>
+    </div>
+
+</body>
+</html>
