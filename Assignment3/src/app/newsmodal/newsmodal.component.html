@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h1 class="modal-title" id="modal-basic-title" style="font-weight: bold">{{news_content.Source}}</h1>
+
+  <p><br>{{news_content.PublishedDate}}</p>
+  <button type="button" class="btn-close" aria-label="Close" (click)="this.activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <h1>{{news_content.Title}}</h1>
+  <p>{{news_content.Description}}</p>
+  <p>For more details click <a href="{{news_content.URL}}" target="_blank" rel="noopener noreferrer">here </a></p>
+</div>
+<div class="modal-footer">
+  <div class="modal-footer-box">
+    <p>Share:</p>
+    <a class="twitter-button" target="_blank" href="https://twitter.com/intent/tweet?text={{encodeURIComponent(news_content.Title)}}&url={{encodeURIComponent(news_content.URL)}}"></a>
+    <a class="facebook-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{encodeURIComponent(news_content.URL)}}"></a>
+  </div>
+</div>
+
+
+
+

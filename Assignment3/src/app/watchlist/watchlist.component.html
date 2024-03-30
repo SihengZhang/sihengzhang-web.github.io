@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row justify-content-center" style="height: 180px">
+    <div class="col-12 d-flex flex-column align-items-center">
+
+      <div *ngIf="watchlist; else loading" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+        <div style="font-size: 48px; font-weight: bold; position: relative; top: 20px">My Watchlist</div>
+        <ngb-alert *ngIf="watchlist.length === 0" [type]="'warning'" [dismissible]="false" style="position: relative; top: 50px">
+           Currently you don't have any stock in your watchlist.
+        </ngb-alert>
+      </div>
+      <div *ngFor="let item of watchlist;" class="block">
+        <button class="open_button" (click)="open(item.Ticker)">
+          <div style="flex-direction: column;justify-content: center;align-items: center;">
+            <p style="font-size: 36px; font-weight: bold; margin: 5px;">{{item.Ticker}}</p>
+            <div style="font-size: 24px; color: #555555; margin: 5px;">{{item.CompanyName}}</div>
+
+          </div>
+          <div *ngIf="item.Change > 0" style="color: green; justify-content: center">
+            <p style="font-size: 36px; font-weight: bold; text-align: center;"> {{item.LastPrice}}</p>
+            <div style="display: flex; justify-content: center; align-items: center; margin: 5px; font-size: 24px">
+              <div class="up_arrow"></div>
+              <p>{{item.Change}}</p>
+              <p>( {{item.ChangePercentage}} )</p>
+            </div>
+          </div>
+          <div *ngIf="item.Change < 0" style="color: red; justify-content: center">
+            <p style="font-size: 36px; font-weight: bold; text-align: center;"> {{item.LastPrice}}</p>
+            <div style="display: flex; justify-content: center; align-items: center; margin: 5px; font-size: 24px;">
+              <div class="down_arrow"></div>
+              <p>{{item.Change}}</p>
+              <p>( {{item.ChangePercentage}} )</p>
+            </div>
+          </div>
+
+        </button>
+        <button class="close_button" (click)="close(item.Ticker)"></button>
+      </div>
+
+    </div>
+  </div>
+
+<ng-template #loading>
+  <div class="row justify-content-center" style="height: 500px">
+    <div class="col-12 d-flex flex-column align-items-center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</ng-template>
+</div>

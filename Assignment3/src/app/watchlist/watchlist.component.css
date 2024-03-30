@@ -1,0 +1,39 @@
+.block {
+  width: 100%;
+  height: 200px;
+  margin: 40px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.open_button {
+  height: 150px;
+  width: 80%;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.close_button {
+  margin: 0;
+  padding: 0;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+
+  position: relative;
+  top: -45px;
+  transform: translate(-50%, -50%);
+
+  background-image: url('./x.svg');
+}

@@ -1,0 +1,78 @@
+.container {
+  padding: 0;
+}
+#big-title {
+  font-size: 36px;
+
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 100px;
+  left: 50%;
+}
+
+#search-bar {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 180px;
+  left: 50%;
+
+  width: 500px;
+  height: 50px;
+
+  border-radius: 25px;
+  border: 5px solid #1d279d;
+  background-color: #ffffff;
+}
+
+#ticker-symbol {
+  width: 350px;
+  height: 40px;
+
+  position: absolute;
+  top: 0;
+  left: 25px;
+
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  color: #000000;
+  padding: 10px;
+  border: none;
+}
+
+button.upper-buttons {
+  margin: 0;
+  padding: 0;
+
+  background-color: #ffffff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border: none;
+  cursor: pointer;
+}
+
+#search-button {
+  width: 20px;
+  height: 20px;
+
+  position: absolute;
+  top: 50%;
+  left: 400px;
+  transform: translate(-50%, -50%);
+
+  mask-image: url('./magnifying-glass-solid.svg');
+  background-color: #1d279d;
+}
+
+#clear-button {
+  width: 40px;
+  height: 40px;
+
+  position: absolute;
+  top: 50%;
+  left: 450px;
+  transform: translate(-50%, -50%);
+
+  background-image: url('./x.svg');
+}

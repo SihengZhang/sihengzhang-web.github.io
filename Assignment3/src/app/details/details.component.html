@@ -1,0 +1,160 @@
+<div *ngIf="company_earnings; else loading">
+  <div class="row justify-content-center" style="height: 180px">
+    <div class="col-11 d-flex align-items-center">
+
+      <div class="logo_block">
+        <div style="display: flex; justify-content: center; align-items: center; margin: 5px;">
+          <p style="font-size: 36px; font-weight: bold; margin: 5px;">{{stock_details.Ticker}}</p>
+          <button [ngClass]="{'star-filled': star_status, 'star-empty': !star_status}" (click)="starButton()"></button>
+        </div>
+        <div style="font-size: 24px; color: #555555; margin: 5px;">{{stock_details.CompanyName}}</div>
+        <div style="color: #555555; margin: 5px;">{{stock_details.ExchangeCode}}</div>
+        <div>
+          <button class="btn btn-primary" style="margin-right: 30px" (click)="operation_buy()">Buy</button>
+          <button class="btn btn-primary" style="margin-left: 30px; background-color: red" (click)="operation_sell()">Sell</button>
+        </div>
+
+      </div>
+
+      <div class="logo_block">
+        <img class="company_logo" [src]="stock_details.Logo" alt="company logo">
+      </div>
+
+      <div class="logo_block">
+        <div *ngIf="parseFloat(stock_details.Change) > 0" style="color: green; justify-content: center">
+          <p style="font-size: 36px; font-weight: bold; text-align: center;"> {{stock_details.LastPrice}}</p>
+          <div style="display: flex; justify-content: center; align-items: center; margin: 5px; font-size: 24px">
+            <div class="up_arrow"></div>
+            <p>{{stock_details.Change}}</p>
+            <p>( {{stock_details.ChangePercentage}} )</p>
+          </div>
+        </div>
+        <div *ngIf="parseFloat(stock_details.Change) < 0" style="color: red; justify-content: center">
+          <p style="font-size: 36px; font-weight: bold; text-align: center;"> {{stock_details.LastPrice}}</p>
+          <div style="display: flex; justify-content: center; align-items: center; margin: 5px; font-size: 24px;">
+            <div class="down_arrow"></div>
+            <p>{{stock_details.Change}}</p>
+            <p>( {{stock_details.ChangePercentage}} )</p>
+          </div>
+        </div>
+        <p>{{stock_details.CurrentTimestamp}}</p>
+      </div>
+
+    </div>
+  </div>
+  <div style="display: flex;justify-content: center;">
+    <div class="status_text" *ngIf="stock_details.MarketStatus === 'Open'" style="color: green">Market is Open</div>
+    <div class="status_text" *ngIf="stock_details.MarketStatus !== 'Open'" style="color: red">Market Closed on {{stock_details.CurrentTimestamp}}</div>
+  </div>
+  <ngb-alert *ngIf="starAlert" [type]="'success'" (closed)="starAlert = false">
+    {{this.ticker}} added in the watchlist
+  </ngb-alert>
+  <mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+    <mat-tab label="Summary">
+      <div class="row justify-content-center">
+        <div class="col-xl-6 d-flex flex-column align-items-center">
+          <div style="width: 100%; height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <table style="margin: 10px">
+              <tr><th>High Price:</th><td>{{ summary1.HighPrice }}</td></tr>
+              <tr><th>Low Price:</th><td>{{ summary1.LowPrice }}</td></tr>
+              <tr><th>Open Price:</th><td>{{ summary1.OpenPrice }}</td></tr>
+              <tr><th>Prev. Price:</th><td>{{ summary1.PrevClose }}</td></tr>
+            </table>
+            <u style="font-size: 24px; font-weight: bold; margin: 10px">About the company</u>
+            <div class="summary-lines"><p style="font-weight: bold">IPO Start Date: </p><p>{{summary2.IPOStartDate}}</p></div>
+            <div class="summary-lines"><p style="font-weight: bold">Industry: </p><p>{{summary2.Industry}}</p></div>
+            <div class="summary-lines"><p style="font-weight: bold">Webpage:</p><a href="{{summary2.Webpage}}" target="_blank">{{summary2.Webpage}}</a></div>
+            <div class="summary-lines"><p style="font-weight: bold">Company peers:</p></div>
+            <div class="summary-lines">
+              <a *ngFor="let peer of summary2.CompanyPeers" href="/search/{{peer}}" style="margin: 5px">{{peer}}</a>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xl-6 d-flex flex-column align-items-center">
+          <highcharts-chart
+            [Highcharts]="Highcharts"
+            [options]="chartOptionsPrice"
+            style="width: 100%; height: 400px; display: block;"
+          ></highcharts-chart>
+
+        </div>
+      </div>
+    </mat-tab>
+
+
+    <mat-tab label="Top News">
+      <div class="row justify-content-center">
+        <div class="col-xl-6 d-flex flex-column align-items-center">
+          <div *ngFor="let new1 of news1;" style="width: 100%; margin: 20px">
+            <button class="news_button" (click)="open(new1)">
+              <img class="news_img" src="{{new1.Image}}" alt="Image" >
+              <div class="news_title">{{new1.Title}}</div>
+            </button>
+          </div>
+        </div>
+        <div class="col-xl-6 d-flex flex-column align-items-center">
+          <div *ngFor="let new2 of news2;" style="width: 100%; margin: 20px">
+            <button class="news_button" (click)="open(new2)">
+              <img class="news_img" src="{{new2.Image}}" alt="Image">
+              <div class="news_title">{{new2.Title}}</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </mat-tab>
+
+
+    <mat-tab label="Charts">
+      <highcharts-chart
+        [Highcharts]="Highcharts"
+        [options]="chartOptionsSMA"
+        style="width: 100%; height: 500px; display: block;"
+      ></highcharts-chart>
+    </mat-tab>
+
+
+    <mat-tab label="Insights">
+      <div style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center;">
+        <table>
+          <tr><th>Name</th><th>MSPR</th><th>Change</th>
+          </tr>
+          <tr><th>Total</th><td>{{ insights.TotalMSPR }}</td><td>{{ insights.TotalChange }}</td>
+          </tr>
+          <tr><th>Positive</th><td>{{ insights.PositiveMSPR }}</td><td>{{ insights.PositiveChange }}</td>
+          </tr>
+          <tr><th>Positive</th><td>{{ insights.NegativeMSPR }}</td><td>{{ insights.NegativeChange }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="row justify-content-center" style="height: 500px">
+        <div class="col-xl-6 d-flex flex-column align-items-center">
+          <highcharts-chart
+            [Highcharts]="Highcharts"
+            [options]="chartOptionsStack"
+            style="width: 100%; height: 400px; display: block;"
+          ></highcharts-chart>
+        </div>
+        <div class="col-xl-6 d-flex flex-column align-items-center">
+          <highcharts-chart
+            [Highcharts]="Highcharts"
+            [options]="chartOptionsSpline"
+            style="width: 100%; height: 400px; display: block;"
+          ></highcharts-chart>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
+
+
+<ng-template #loading>
+  <div class="row justify-content-center" style="height: 500px">
+    <div class="col-12 d-flex flex-column align-items-center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</ng-template>
+

@@ -1,0 +1,132 @@
+.company_logo {
+  width: 150px;
+  height: 150px;
+  top: 0;
+}
+
+.logo_block {
+  height: 200px;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.status_text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.news_button {
+  height: 150px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.news_img {
+  height: 120px;
+  width: 160px;
+  border-radius: 5px;
+}
+
+.news_title {
+  height: 120px;
+  width: 200px;
+  font-size: 18px;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  border: none;
+
+}
+
+th {
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  font-weight: bold;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td {
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  width: 160px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+.summary-lines {
+  margin: 2px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.up_arrow {
+  width: 15px;
+  height: 15px;
+
+  mask-image: url('./caret-up-fill.svg');
+  background-color: green;
+  background-repeat: no-repeat;
+}
+
+.down_arrow {
+  width: 15px;
+  height: 15px;
+
+  mask-image: url('./caret-down-fill.svg');
+  background-color: red;
+  background-repeat: no-repeat;
+}
+
+.star-empty {
+  margin: 0;
+  padding: 0;
+
+  background-color: #ffffff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border: none;
+  cursor: pointer;
+
+  width: 35px;
+  height: 35px;
+
+  background-image: url('./star.svg');
+
+}
+.star-filled {
+  margin: 0;
+  padding: 0;
+
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+
+  mask-image: url('./star-fill.svg');
+  mask-repeat: no-repeat;
+  background-color: darkgoldenrod;
+
+}
